@@ -2,6 +2,10 @@
 
 Newest first.
 
+## 2026-11-26: the public REST read
+
+Suite: 23 tests before, 29 after. `test/public-read.test.ts` calls `GET /api/sponsors` through Payload's endpoint handler with a real in-memory MongoDB: visitor, signed-in non-staff user and staff; unlisted and archived sponsors and contacts never reach the first two (including by where, sort and select probes, which answer 200 with nothing or 400); staff see all four; the exported `publicSponsors` filter is unchanged after requests. A 500 reported on a live site was not reproduced here. Not covered: a host's own wrapping of `read`.
+
 ## 2026-11-11: only an exact `true` passes, everywhere
 
 Suite: 19 tests before, 23 after (`npx vitest run`, real Payload, in-memory MongoDB, fake mailer). Closes the "for the lead" item in the entry below: every access decision now fails closed.
