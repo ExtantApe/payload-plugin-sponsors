@@ -2,6 +2,12 @@
 
 Newest first.
 
+## 2026-11-26: 14-day check
+
+- Changes since 2026-11-26, the entry below: only its merge (79cd4a3). Changes since 2026-11-11, the last entry before it: the 0.3.2 release (b523b49), EXTANT APE named as the copyright holder (8123060, a7226e1), the move to `@extantape` (26d7851, which changes the package name in three admin component paths in `src/collections.ts` and `src/plugin.ts`), two docs edits (d2a853c, f190a9a), and the public-read tests in the entry below (4fd2711, tests only).
+- Behavior unchanged; the suite passes (29 tests), and so does the typecheck.
+- Gaps: none new. The three component paths were read against `package.json` and match the new name. No test pins those paths.
+
 ## 2026-11-26: the public REST read
 
 Suite: 23 tests before, 29 after. `test/public-read.test.ts` calls `GET /api/sponsors` through Payload's endpoint handler with a real in-memory MongoDB: visitor, signed-in non-staff user and staff; unlisted and archived sponsors and contacts never reach the first two (including by where, sort and select probes, which answer 200 with nothing or 400); staff see all four; the exported `publicSponsors` filter is unchanged after requests. A 500 reported on a live site was not reproduced here. Not covered: a host's own wrapping of `read`.
